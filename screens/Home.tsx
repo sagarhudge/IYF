@@ -1,22 +1,19 @@
-import { StyleSheet, View, Text, Pressable, FlatList, ImageBackground, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Loader from './common/Loader';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Item } from 'react-native-paper/lib/typescript/components/Drawer/Drawer';
-import { Image } from 'react-native';
-import { useEffect } from 'react';
+import { Dimensions, Image, ScrollView, Text, View } from 'react-native';
+import React, { useState } from 'react';
 
-
+const { width } = Dimensions.get("window");
+const height = width * 0.6;
 
 const HomeScreen = () => {
-  const navigation = useNavigation();
 
 
   const arrayImg = [
     {
       id: 1,
       src: 'https://internationalyogafestival.org/wp-content/uploads/2020/12/saints-slide-pink2.jpg',
-      message: 'Listen to the Divine Words of Indias great spiritual leade'
+      message: 'Listen to the Divine Words of Indias great spiritual leade',
+
     },
     {
       id: 2,
@@ -52,47 +49,37 @@ const HomeScreen = () => {
     }
 
   ]
-  const imageSlider = () => {
-    return arrayImg.map((item: any) => {
-      return <ImageBackground style={{ width: '100%', height: "30%" }}
-        resizeMode='cover' source={{ uri: item.src }} />
-    })
 
-  }
 
-  const getData=()=>{
-    fetch('https://internationalyogafestival.org/wp-content/uploads/2019/11/homeslide-7-pink.jpg')
-    // .then(response=>response.json())
-    .then(data=>console.log(data))
-  }
-  
-  // useEffect(()=>{getData()},[]);
+  const [active, setActive] = useState(0);
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+ 
 
-      <View style={{ flex: 1, padding: 16 }}>
+      <View style={{height,width,alignItems:'center'}}>
+        <ScrollView pagingEnabled
+          horizontal
+          style={{ width, height }}
+          showsHorizontalScrollIndicator={false}>
+          {
+            arrayImg.map((item: any, index: number) => {
+              return <Image
+                key={index}
+                source={{ uri: item.src }}
+                style={{ width, height, resizeMode: 'cover' }}
+              />
 
-        <Text>asd</Text>
-
-        {/* <Image
-          style={{ width: 100, height: 100 }}
-          onError={e=>console.log('--------',e)}
-          source={{
-            uri:
-              'https://www.planwallpaper.com/static/images/9-credit-1.jpg'
-          }} /> */}
-
-        <Image source={{ uri:"https://facebook.github.io/react/img/logo_og.png" }}
-          // onError={e => console.log('--------', e)}
-          resizeMode='contain'
-          style={{ width: 400, height: 400 }} />
-
-          
+            })
+          }
+        </ScrollView>
+        <View style={{ flexDirection: 'row', position: 'absolute', bottom: 10 }}>
+          {
+            arrayImg.map((k: any, i: number) => <Text key={i} style={{ color: i == active ? 'red' : 'gray' }}>⬤</Text>)
+          }
+        </View>
       </View>
-      <Loader isLoading={false} />
 
-    </SafeAreaView>
-  );
+   );
 };
 
 export default HomeScreen;
