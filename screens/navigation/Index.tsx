@@ -6,12 +6,12 @@ import { PaperProvider, MD3LightTheme, adaptNavigationTheme } from 'react-native
 const { LightTheme } = adaptNavigationTheme({ reactNavigationLight: DefaultTheme });
 
 
-const theme = {
+export const theme = {
   ...MD3LightTheme, // or MD3DarkTheme
   roundness: 2,
   colors: {
     ...MD3LightTheme.colors,
-    primary: 'rgb(120, 69, 172)#FCA072',
+    primary: '#f74010',
     secondary: '#FEBC92',
     tertiary: '#FFD5B2',
     background:'#FFF9F2'

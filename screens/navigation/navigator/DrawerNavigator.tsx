@@ -11,9 +11,10 @@ export const DrawerNavigatgor = () => {
     <Drawer.Navigator
       screenOptions={({ navigation }) => ({
         headerStyle: {
-          backgroundColor: '#fda172',
+          backgroundColor: '#fff',
           // width: '75%'
         },
+        headerTintColor:"#f74010"
       })}
       drawerContent={(props) => <NavigationDrawer {...props} />}
     >

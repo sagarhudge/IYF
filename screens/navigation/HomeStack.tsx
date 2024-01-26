@@ -11,7 +11,7 @@ import { DrawerNavigatgor } from './navigator/DrawerNavigator';
 
 const HomeStackNavigator = () => {
   return (
-    <HomeStack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
+    <HomeStack.Navigator screenOptions={{headerShown: false}}>
       <HomeStack.Screen name="Home" component={DrawerNavigatgor} />
       <HomeStack.Screen name="Details" component={DetailsScreen} />
     </HomeStack.Navigator>
