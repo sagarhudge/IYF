@@ -20,7 +20,7 @@ const Testimonials = ({ data }: iProps) => {
                 <Avatar.Image source={{ uri: data.image ? data.image : 'https://static.vecteezy.com/system/resources/previews/000/642/975/original/quote-sign-icon-quotation-mark-vector.jpg' }} />
                 <View style={{ marginHorizontal: 16, width: "75%" }}>
                     <Title numberOfLines={1} ellipsizeMode="tail" style={{ color: 'red' }}>{data?.name}</Title>
-                    <Subheading numberOfLines={2} ellipsizeMode="tail" style={{ color: 'gray' }}>{data?.description}</Subheading>
+                    <Subheading style={{ color: 'gray' }}>{data?.description}</Subheading>
                 </View>
             </View>
         </View>)
