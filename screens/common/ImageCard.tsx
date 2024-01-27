@@ -1,22 +1,39 @@
 import * as React from 'react';
-import { Linking } from 'react-native';
-import { Avatar, Button, Card, Text } from 'react-native-paper';
+import { Image, Linking, TouchableOpacity, View } from 'react-native';
+import { Button, Chip, IconButton, Text } from 'react-native-paper';
+import { theme } from '../navigation/Index';
 
-const LeftContent = (props: any) => <Avatar.Icon {...props} icon="folder" />
 
-const ImageCard = () => (
-    <Card  onPress={() => Linking.openURL('https://internationalyogafestival.org/IYF-2023-Schedule.pdf')}>
+const ImageCard = ({ data }: any) => (
 
-        <Card.Cover style={{width:200,height:200}} source={{ uri: 'https://internationalyogafestival.org/wp-content/uploads/2023/03/2023schedulecover.jpg' }} />
-        <Card.Content style={{alignItems:'center'}}>
-            <Text variant="titleLarge">Download the IYF 2023 Schedule</Text>
-            <Text variant="bodyMedium">Learn about the daily classes offered in yogasana, meditation and healing practices, as well as talks with renowned spiritual leaders.</Text>
-        </Card.Content>
-        {/* <Card.Actions>
-      <Button>Cancel</Button>
-      <Button>Ok</Button>
-    </Card.Actions> */}
-    </Card>
+    data.map((data: any, index: number) => <View
+        key={index}
+        style={{ alignItems: 'center', padding: 10, marginVertical: 16, backgroundColor: 'white' }}>
+
+        <IconButton
+            style={{ position: 'absolute', top: 10, right: 10 }}
+            icon="download"
+            mode='outlined'
+            iconColor={theme.colors.primary}
+            size={20}
+            onPress={() => data?.pdf && Linking.openURL(data?.pdf)}
+        />
+
+        <Image
+            style={{ width: 150, height: 170, resizeMode: 'contain' }}
+            source={{ uri: data?.image }} />
+        <View style={{ alignItems: 'center' }}>
+            <Text style={{ marginTop: 16 }} variant="titleLarge">{data?.name}</Text>
+            <Text variant="bodyMedium">{data?.description}</Text>
+
+        </View>
+        {(data?.linkOut || data?.linkInd) && <View style={{ flexDirection: 'row', justifyContent: 'space-evenly',marginTop:16 }}>
+
+            {data?.linkOut != '' && <Chip style={{ marginRight: 10 }} onPress={() => Linking.openURL(data.linkOut)}>Purchanse here Non Ind</Chip>}
+            {data?.linkInd != '' && <Chip onPress={() => Linking.openURL(data?.linkInd)}>Purchanse here Ind</Chip>}
+
+        </View>}
+    </View>)
 );
 
 export default ImageCard;

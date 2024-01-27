@@ -15,11 +15,10 @@ const PresentorsGrid = ({ title, data }: iProps) => {
 
     return (
         <FlatList
-            ListHeaderComponent={<Headline style={{ padding: 16, fontWeight: '500', color: theme.colors.primary, backgroundColor: 'white' }}>{title}</Headline>
-            }
+     
             scrollEnabled={false}
             data={data}
-            style={{ backgroundColor: 'white', flexGrow: 0 }}
+            style={{ backgroundColor: 'white', flexGrow: 0,paddingTop:16 }}
             renderItem={({ item }) => (
                 <View
                     style={{
@@ -32,7 +31,7 @@ const PresentorsGrid = ({ title, data }: iProps) => {
                     <Subheading style={{ marginVertical: 8 }}>{item.name}</Subheading>
                 </View>
             )}
-            numColumns={3}
+            numColumns={2}
         // keyExtractor={(item) => item.id}
         />
 

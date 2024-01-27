@@ -37,7 +37,7 @@ const Slider = () => {
                     })
                 }
             </ScrollView>
-            <View style={{ backgroundColor: '#00000040', padding: 16, position: 'absolute', width }}>
+                        <View style={{ backgroundColor: '#00000040', padding: 16, position: 'absolute', width }}>
                 <Text style={{ color: 'white', textAlign: 'center' }}>{mainSliderArray[active]?.message}</Text>
 
             </View>

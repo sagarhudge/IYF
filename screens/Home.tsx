@@ -1,16 +1,14 @@
-import { Dimensions, SafeAreaView, Text, View } from 'react-native';
+import { Dimensions, SafeAreaView, View } from 'react-native';
 import React from 'react';
 import Slider from './common/Slider';
 import PresentorsGrid from './common/PresentorsGrid';
 import { ScrollView } from 'react-native-gesture-handler';
-import { presenterData, testimonials } from './store/ArrayConst';
+import { aboutIYF, booksCar, presenterData, purchase, testimonials } from './store/ArrayConst';
 import Testimonials from './common/Testimonials';
-import { Avatar, Caption, Subheading, Title } from 'react-native-paper';
-import { theme } from './navigation/Index';
+import { Avatar, Headline, Subheading } from 'react-native-paper';
 import ImageCard from './common/ImageCard';
+import { theme } from './navigation/Index';
 
-const { width } = Dimensions.get("window");
-const height = width * 0.6;
 
 const HomeScreen = () => {
   return (
@@ -26,9 +24,32 @@ const HomeScreen = () => {
           </View>
         </View>
 
-        <PresentorsGrid title={'Presentors'} data={presenterData} />
-        <Testimonials data={testimonials[0]} />
-        <ImageCard></ImageCard>
+
+        <View>
+          <Subheading style={{ textAlign: 'center', backgroundColor: 'white', color: theme.colors.primary,paddingVertical:16 }}>A Celebration of the Joy of Yoga at the International Yoga Festival</Subheading>
+          <PresentorsGrid title={''} data={aboutIYF} />
+        </View>
+
+
+        <View style={{ marginTop: 16,backgroundColor:'white' }}>
+          <Headline style={{marginHorizontal:16,marginVertical:20}}>Learn About IYF 2023!</Headline>
+          <ImageCard data={booksCar} />
+        </View>
+
+        <View style={{ marginTop: 16,backgroundColor:'white' }}>
+         <Headline style={{marginHorizontal:16,marginVertical:20}}>Drops of Inspiration</Headline>
+          <ImageCard data={purchase} />
+
+
+        </View>
+        <View style={{ marginTop: 16,backgroundColor:'white' }}>
+         <Headline style={{marginHorizontal:16,marginVertical:20}}>Testimonials</Headline>
+
+         <Testimonials data={testimonials} />
+        </View>
+
+
+
       </ScrollView>
     </SafeAreaView>
 
