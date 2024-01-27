@@ -81,3 +81,19 @@ export const mainSliderArray = [
 
     }
   ]
+  export const testimonials=[
+    {
+        id:1,
+        name:'Pardeep (Delhi, India)',
+        description:'Really fabulous, Real picture of Spiritual belief',
+        image:'https://tse2.mm.bing.net/th?id=OIP.T4dxzCrraUvngcXqZWgQjAHaEK&pid=Api&P=0&h=220'
+
+    },
+    {
+        id:2,
+        name:'Mario',
+        description:'Thank you, to Pujya Swami Chidanand Saraswatiji Maharaj, Sadhvi Bhagawati Saraswati, the talented students, volunteers, spiritual leaders, dignitaries, yoga masters, sacred music masters, and all the participants from all over the world. The International Yoga Festival creates a beautiful spiritual space to be, discover, and feel the power of universe.',
+        image:'https://tse2.mm.bing.net/th?id=OIP.T4dxzCrraUvngcXqZWgQjAHaEK&pid=Api&P=0&h=220'
+
+    } 
+  ]
