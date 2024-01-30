@@ -7,6 +7,14 @@ import PresentorsList from "../../src/Presentors/PresentorsList";
 import AboutUs from "../../src/about/AboutUs";
 import DrawerNavigator from "./DrawerNavigator";
 
+import Icon from 'react-native-vector-icons/Octicons';
+
+const MenuIcon = ({ navigate }: any) => <Icon
+  name='three-bars'
+  size={20}
+  color='#000'
+  onPress={() => navigate('DrawerOpen')}
+/>;
 
 
 const Stack = createStackNavigator();
@@ -20,7 +28,7 @@ const screenOptionStyle = {
     // width: '75%'
   },
   headerTintColor: "#f74010",
-  headerShown: false,
+  headerShown: true,
 };
 
 

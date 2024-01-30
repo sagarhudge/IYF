@@ -14,7 +14,7 @@ const screenOptionStyle = {
     backgroundColor: '#fff',
     // width: '75%'
   },
-  headerTintColor: "#f74010",headerShown:true
+  headerTintColor: "#f74010",headerShown:false
 };
 const DrawerNavigator = () => {
   return (
