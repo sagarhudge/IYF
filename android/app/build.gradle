@@ -89,6 +89,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        // release {
+        //     storeFile file('C:\Users\sagar\Desktop\2023 project')
+        //     storePassword 'IYF@2024$'
+        //     keyAlias 'IYF'
+        //     keyPassword 'IYF@2024$'
+        // }
     }
     buildTypes {
         debug {

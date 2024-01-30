@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { NavigationContainer,DefaultTheme } from '@react-navigation/native';
- 
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+
 import HomeStackNavigator from './HomeStack';
 import { PaperProvider, MD3LightTheme, adaptNavigationTheme } from 'react-native-paper';
+import { MainStackNavigator } from './navigator/StackNavigator';
+import DrawerNavigator from './navigator/DrawerNavigator';
 const { LightTheme } = adaptNavigationTheme({ reactNavigationLight: DefaultTheme });
 
 
@@ -14,17 +16,16 @@ export const theme = {
     primary: '#f74010',
     secondary: '#FEBC92',
     tertiary: '#FFD5B2',
-    background:'#FFF9F2'
-  },
+    background: '#FFF9F2'
+  }
 };
 
 
 const RootNavigator = () => {
   return (
     <PaperProvider theme={theme}>
-
       <NavigationContainer >
-        <HomeStackNavigator />
+        <MainStackNavigator />
       </NavigationContainer>
     </PaperProvider>
   );

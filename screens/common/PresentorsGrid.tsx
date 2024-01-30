@@ -1,4 +1,4 @@
-import { Dimensions, FlatList, Image, NativeScrollEvent, NativeSyntheticEvent, ScrollView, Text, View } from 'react-native';
+import { Dimensions, FlatList, Image, NativeScrollEvent, NativeSyntheticEvent, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import { mainSliderArray, presenterData } from '../store/ArrayConst';
 import { Avatar, Headline, Subheading } from 'react-native-paper';
@@ -9,18 +9,19 @@ const height = width * 0.6;
 
 type iProps = {
     title: string,
-    data: any
+    data: any,
+    navigation: any
 }
-const PresentorsGrid = ({ title, data }: iProps) => {
+const PresentorsGrid = ({ title, data, navigation }: iProps) => {
 
     return (
         <FlatList
-     
             scrollEnabled={false}
             data={data}
-            style={{ backgroundColor: 'white', flexGrow: 0,paddingTop:16 }}
+            style={{ backgroundColor: 'white', flexGrow: 0, paddingTop: 16 }}
             renderItem={({ item }) => (
-                <View
+                <TouchableOpacity
+                    onPress={()=>navigation?.navigate('PresentorsList')}
                     style={{
                         flex: 1,
                         flexDirection: 'column',
@@ -29,7 +30,7 @@ const PresentorsGrid = ({ title, data }: iProps) => {
                     }}>
                     <Avatar.Image size={80} source={{ uri: item.image }} />
                     <Subheading style={{ marginVertical: 8 }}>{item.name}</Subheading>
-                </View>
+                </TouchableOpacity>
             )}
             numColumns={2}
         // keyExtractor={(item) => item.id}
