@@ -17,7 +17,7 @@ export const drawerItem: NavItem[] = [
     {
         id: 1,
         title: "Presenters",
-        path: 'PresentorsList'
+        path: 'PresentersList'
     },
     {
         id: 2,

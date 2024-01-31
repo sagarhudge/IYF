@@ -12,7 +12,7 @@ type iProps = {
     data: any,
     navigation: any
 }
-const PresentorsGrid = ({ title, data, navigation }: iProps) => {
+const PresentersGrid = ({ title, data, navigation }: iProps) => {
 
     return (
         <FlatList
@@ -21,7 +21,7 @@ const PresentorsGrid = ({ title, data, navigation }: iProps) => {
             style={{ backgroundColor: 'white', flexGrow: 0, paddingTop: 16 }}
             renderItem={({ item }) => (
                 <TouchableOpacity
-                    onPress={()=>navigation?.navigate('PresentorsList')}
+                    onPress={()=>navigation?.navigate('PresentersList')}
                     style={{
                         flex: 1,
                         flexDirection: 'column',
@@ -39,4 +39,4 @@ const PresentorsGrid = ({ title, data, navigation }: iProps) => {
     );
 };
 
-export default PresentorsGrid;
+export default PresentersGrid;

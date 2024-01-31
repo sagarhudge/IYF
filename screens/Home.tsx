@@ -1,8 +1,7 @@
 import { Dimensions, SafeAreaView, View } from 'react-native';
 import React from 'react';
 import Slider from './common/Slider';
-import PresentorsGrid from './common/PresentorsGrid';
-import { ScrollView } from 'react-native-gesture-handler';
+ import { ScrollView } from 'react-native-gesture-handler';
 import { aboutIYF, booksCar, presenterData, purchase, testimonials } from './store/ArrayConst';
 import Testimonials from './common/Testimonials';
 import { Avatar, Button, Headline, Subheading } from 'react-native-paper';
@@ -11,6 +10,7 @@ import { theme } from './navigation/Index';
 import { Image } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { HomeStackParams } from './navigation/types';
+import PresentersGrid from './common/PresentersGridGrid';
 const { width } = Dimensions.get("window");
 const height = width * 0.9;
 
@@ -63,7 +63,7 @@ const HomeScreen: React.FC<props> = (props:props): JSX.Element => {
         {/* about IYF */}
         <View>
           <Subheading style={{ textAlign: 'center', backgroundColor: 'white', color: theme.colors.primary, paddingVertical: 16 }}>A Celebration of the Joy of Yoga at the International Yoga Festival</Subheading>
-          <PresentorsGrid title={''} data={aboutIYF} navigation={props.navigation} />
+          <PresentersGrid title={''} data={aboutIYF} navigation={props.navigation} />
         </View>
 
         {/* Books download */}

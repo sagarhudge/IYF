@@ -7,7 +7,7 @@ import DetailsScreen from '../Details';
 // stack type
 import { HomeStackParams } from './types';
 import { DrawerNavigatgor } from './navigator/DrawerNavigator';
-import PresentorsList from '../src/Presentors/PresentorsList';
+import PresentersList from '../src/Presenters/PresentersList';
 
  const HomeStack = createNativeStackNavigator<HomeStackParams>();
 
@@ -16,7 +16,7 @@ const HomeStackNavigator = () => {
     <HomeStack.Navigator screenOptions={{headerShown: false}}>
       <HomeStack.Screen name="Home" component={DrawerNavigatgor} />
       <HomeStack.Screen name="Details" component={DetailsScreen} />
-      <HomeStack.Screen name="PresentorsList" component={PresentorsList} />
+      <HomeStack.Screen name="PresentersList" component={PresentersList} />
     </HomeStack.Navigator>
   );
 };

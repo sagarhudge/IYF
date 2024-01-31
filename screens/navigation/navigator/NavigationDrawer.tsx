@@ -15,16 +15,15 @@ export interface iProps {
 }
 
 export const NavigationDrawer = (props: any) => {
-    const width = useWindowDimensions().width * 0.3;
+    const width = useWindowDimensions().width;
 
     function drawerHeader() {
-
         return (
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: theme.colors.errorContainer }}>
                 {/* <Image source={require('../../../assets/')}/> */}
-                <View style={{ backgroundColor: theme.colors.tertiary, padding: 16 }}>
-                    <Title>International Yoga Festival</Title>
-                    <Caption>15 March 2024, 6:00 AM </Caption>
+                <View style={{ padding: 10 }}>
+                    <Title style={{ color: 'black' }}>International Yoga Festival</Title>
+                    <Caption style={{ color: 'black' }}>15 March 2024, 6:00 AM </Caption>
                 </View>
             </View>
         )
@@ -33,11 +32,11 @@ export const NavigationDrawer = (props: any) => {
 
     return (
 
-        <>  
+        <>
             {drawerHeader()}
             <DrawerContentScrollView {...props}>
                 {drawerItem.map(item => <DrawerItem
-                key={item.id}
+                    key={item.id}
                     label={item.title}
                     onPress={() => {
                         props.navigation.navigate(item.path);
