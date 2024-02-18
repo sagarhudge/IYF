@@ -1,7 +1,7 @@
-import { Dimensions, SafeAreaView, View } from 'react-native';
-import React from 'react';
+import { Alert, Dimensions, SafeAreaView, View } from 'react-native';
+import React, { useEffect } from 'react';
 import Slider from './common/Slider';
- import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 import { aboutIYF, booksCar, presenterData, purchase, testimonials } from './store/ArrayConst';
 import Testimonials from './common/Testimonials';
 import { Avatar, Button, Headline, Subheading } from 'react-native-paper';
@@ -11,6 +11,9 @@ import { Image } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { HomeStackParams } from './navigation/types';
 import PresentersGrid from './common/PresentersGridGrid';
+import { PermissionsAndroid } from 'react-native';
+import { onDisplayNotification } from './utils/Notification';
+
 const { width } = Dimensions.get("window");
 const height = width * 0.9;
 
@@ -19,8 +22,12 @@ type props = {
   navigation: StackNavigationProp<HomeStackParams>
 }
 
+useEffect(() => {
+  PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
 
-const HomeScreen: React.FC<props> = (props:props): JSX.Element => {
+}, [])
+
+const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
 
 
   const applyHorizontalScroll = (child: any): any => {
@@ -56,7 +63,9 @@ const HomeScreen: React.FC<props> = (props:props): JSX.Element => {
         <View>
           <Image style={{ width, height: 90, paddingHorizontal: 16 }} source={{ uri: 'https://internationalyogafestival.org/wp-content/uploads/2023/08/Logo-Top51.png' }} />
 
-          <Button textColor='#fff' buttonColor='#d14158' style={{ marginHorizontal: 16, marginBottom: 16 }} mode="contained" onPress={() => console.log('Pressed')}>
+          <Button textColor='#fff' buttonColor='#d14158' style={{ marginHorizontal: 16, marginBottom: 16 }} mode="contained" onPress={() => {
+            Alert.alert("Coming Soon...!")
+          }}>
             Register for IYF 2024 Festival !
           </Button>
         </View>

@@ -61,12 +61,18 @@ const PresentersList: React.FC<props> = (props: props): JSX.Element => {
                     scrollEnabled={false}
                     ListHeaderComponent={<Title style={{ marginBottom: 16, marginHorizontal: 16, color: theme.colors.primary }}>IYF 2024 Revered Saints, Spiritual Masters and Yogacharyas</Title>}
                     data={[...data, ...data]}
+                    // ItemSeparatorComponent={() => (
+                    //     <View style={{ backgroundColor: "gray", height: 1 }} />
+                    // )}
                     keyExtractor={(item: any, index: number) => `${item.item}-${index}`}
                     renderItem={({ item, index }) => <TouchableOpacity
                         onPress={() => props.navigation.navigate('PresenterDetails', { data: { item } })}
-                        style={{ backgroundColor: 'white', flexDirection: 'row', alignItems: 'center', padding: 16, borderBottomWidth: 0.3 }}>
-                        <Avatar.Image style={{ marginHorizontal: 16 }} size={40} source={{ uri: item.image }} />
-                        <Text>{item.name}</Text>
+                    >
+                        <View
+                            style={{ backgroundColor: 'white', flexDirection: 'row', alignItems: 'center', padding: 16,margin:0.5 }}>
+                            <Avatar.Image style={{ marginHorizontal: 16 }} size={70} source={{ uri: item.image }} />
+                            <Title style={{ flex: 1 }}>{item.name}</Title>
+                        </View>
                     </TouchableOpacity>}
                 />
             </View>
