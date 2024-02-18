@@ -109,7 +109,7 @@ export type iDataObj = {
 export const booksCar = [
   {
     id: 1,
-    pad: 'https://internationalyogafestival.org/IYF-2023-Schedule.pdf',
+    pdf: 'https://internationalyogafestival.org/IYF-2023-Schedule.pdf',
     name: 'Download the IYF 2023 Schedule',
     description: 'Learn about the daily classes offered in yogasana, meditation and healing practices, as well as talks with renowned spiritual leaders.',
     image: 'https://internationalyogafestival.org/wp-content/uploads/2023/03/2023schedulecover.jpg'
@@ -117,7 +117,7 @@ export const booksCar = [
   },
   {
     id: 2,
-    pad: 'https://internationalyogafestival.org/iyf2023.pdf""',
+    pdf: 'https://internationalyogafestival.org/iyf2023.pdf""',
     name: 'Download the IYF 2023 Program',
     description: 'Learn about the renowned yogacharyas and spiritual leaders and the yoga styles in the festival, delve into the true meaning of yoga in daily life, and much more.',
     image: 'https://internationalyogafestival.org/wp-content/uploads/2023/03/brochure2023cover.jpg'
@@ -125,7 +125,7 @@ export const booksCar = [
   },
   {
     id: 3,
-    pad: 'https://internationalyogafestival.org/iyf2023.pdf""',
+    pdf: 'https://internationalyogafestival.org/iyf2023.pdf""',
     name: 'Download IYF 2023 Special Newsletter',
     description: 'Highlights from the world-renowned 35th annual International Yoga Festival, held every year at Parmarth Niketan (Rishikesh).',
     image: 'https://internationalyogafestival.org/wp-content/uploads/2023/04/iyf2023newsletter-thumb.jpg'

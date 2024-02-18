@@ -9,15 +9,17 @@ const ImageCard = ({ data }: any) => (
 
     data?.map((data: any, index: number) => <View
         key={index}
-        style={{width, alignItems: 'center', padding: 16,  backgroundColor: 'white',borderBottomColor:"gray",borderBottomWidth:0.5 }}>
+        style={{ width, alignItems: 'center', padding: 16, backgroundColor: 'white', borderBottomColor: "gray", borderBottomWidth: 0.5 }}>
 
-        {data?.pdf!='' && <IconButton
+        {data?.pdf != '' && <IconButton
             style={{ position: 'absolute', top: 10, right: 10 }}
             icon="download"
             mode='outlined'
             iconColor={theme.colors.primary}
             size={20}
-            onPress={() => data?.pdf && Linking.openURL(data?.pdf)}
+            onPress={() => { 
+                console.log('PDF',data?.pdf)
+                data?.pdf && Linking.openURL(data?.pdf) }}
         />}
 
         <Image
