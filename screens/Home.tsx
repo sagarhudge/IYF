@@ -44,6 +44,29 @@ const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
   }
 
 
+
+  function postNotification(url: string, payload: any) {
+
+    const body = { "title": "Schedule Change", "body": "This particular event has been changed" }
+    const body2 = {
+      device_id: '',
+      email: ''
+    }
+
+    
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+
+      },
+      body: JSON.stringify(payload),
+    }).then((response: any) => {
+      console.log('Response', response)
+    });
+  }
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#dcdcdc' }}>
 
@@ -93,7 +116,7 @@ const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
           {applyHorizontalScroll(<ImageCard data={purchase} />)}
 
         </View>
-        
+
         <View style={{ marginTop: 16, backgroundColor: 'white' }}>
           <Headline style={{ marginHorizontal: 16, marginVertical: 20 }}>Testimonials</Headline>
 

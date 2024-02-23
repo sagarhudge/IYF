@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "906123279001",
-    "project_id": "iyfapp",
-    "storage_bucket": "iyfapp.appspot.com"
+    "project_number": "854297519848",
+    "project_id": "iyfestival-eea51",
+    "storage_bucket": "iyfestival-eea51.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:906123279001:android:ae3526240b329e82509608",
+        "mobilesdk_app_id": "1:854297519848:android:302213338e8a7543994b5d",
         "android_client_info": {
           "package_name": "com.iyf"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCDaLcyBKSGNPL4uKYIod-Q_EAXhxYn4ys"
+          "current_key": "AIzaSyCYvcrMI0RxWiOJNe8qY3B6X6HK-dW7dzE"
         }
       ],
       "services": {
