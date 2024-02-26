@@ -39,6 +39,7 @@ export const NavigationDrawer = (props: any) => {
                     key={item.id}
                     label={item.title}
                     onPress={() => {
+                        props.navigation.closeDrawer();
                         props.navigation.navigate(item.path);
                     }}
                 />)}

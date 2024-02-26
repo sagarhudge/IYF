@@ -1,4 +1,4 @@
-import { Alert, Dimensions, SafeAreaView, View } from 'react-native';
+import { Alert, Dimensions, Linking, SafeAreaView, View } from 'react-native';
 import React, { useEffect } from 'react';
 import Slider from './common/Slider';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -45,26 +45,33 @@ const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
 
 
 
-  function postNotification(url: string, payload: any) {
+  // function postNotification(url: string, payload: any) {
 
-    const body = { "title": "Schedule Change", "body": "This particular event has been changed" }
-    const body2 = {
-      device_id: '',
-      email: ''
-    }
+  //   const body = { "title": "Schedule Change", "body": "This particular event has been changed" }
+  //   const body2 = {
+  //     device_id: '',
+  //     email: ''
+  //   }
 
-    
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
 
-      },
-      body: JSON.stringify(payload),
-    }).then((response: any) => {
-      console.log('Response', response)
-    });
+  //   fetch(url, {
+  //     method: 'POST',
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json',
+
+  //     },
+  //     body: JSON.stringify(payload),
+  //   }).then((response: any) => {
+  //     console.log('Response', response)
+  //   });
+  //     }
+
+
+  function webViewNavigate(payload: any, title: string) {
+
+    props.navigation.navigate('WebViewScreen', { data: { item: payload, title: title } })
+
   }
 
   return (
@@ -87,9 +94,18 @@ const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
           <Image style={{ width, height: 90, paddingHorizontal: 16 }} source={{ uri: 'https://internationalyogafestival.org/wp-content/uploads/2023/08/Logo-Top51.png' }} />
 
           <Button textColor='#fff' buttonColor='#d14158' style={{ marginHorizontal: 16, marginBottom: 16 }} mode="contained" onPress={() => {
-            Alert.alert("Coming Soon...!")
+            const data = { PresenterPageURL: 'https://internationalyogafestival.org/register/' }
+            webViewNavigate(data, "Register")
+
           }}>
             Register for IYF 2024 Festival !
+          </Button>
+          <Button textColor='#fff' buttonColor='green' style={{ marginHorizontal: 16, marginBottom: 16 }} mode="contained" onPress={() => {
+            const data = { PresenterPageURL: 'https://divineshaktifoundation.org/donate/' }
+
+            webViewNavigate(data, "Donation")
+          }}>
+            Donation
           </Button>
         </View>
         {/* about IYF */}

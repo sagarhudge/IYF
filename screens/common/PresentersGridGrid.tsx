@@ -12,7 +12,17 @@ type iProps = {
     data: any,
     navigation: any
 }
+
+
+
 const PresentersGrid = ({ title, data, navigation }: iProps) => {
+
+
+    function webViewNavigate(payload: any, title: string) {
+
+        navigation.navigate('WebViewScreen', { data: { item: payload, title: title } })
+
+    }
 
     return (
         <FlatList
@@ -21,7 +31,13 @@ const PresentersGrid = ({ title, data, navigation }: iProps) => {
             style={{ backgroundColor: 'white', flexGrow: 0, paddingTop: 16 }}
             renderItem={({ item }) => (
                 <TouchableOpacity
-                    onPress={()=>navigation?.navigate('PresentersList')}
+                    onPress={() => {
+                        if (item?.PresenterPageURL) {
+                            const data = { PresenterPageURL: item?.PresenterPageURL}
+
+                            webViewNavigate(data, item?.name || '')
+                        } else navigation?.navigate('PresentersList')
+                    }}
                     style={{
                         flex: 1,
                         flexDirection: 'column',

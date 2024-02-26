@@ -3,12 +3,15 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../../Home";
- import AboutUs from "../../src/about/AboutUs";
+import AboutUs from "../../src/about/AboutUs";
 import DrawerNavigator from "./DrawerNavigator";
 
 import Icon from 'react-native-vector-icons/Octicons';
-import PresentersList from "../../src/Presentors/PresentersList";
-import PresenterDetails from "../../src/Presentors/PresenterDetails";
+ 
+import WebViewScreen from "../../src/WebView";
+import SendNotification from "../../src/SendNotification";
+import PresenterDetails from "../../src/Presenter/PresenterDetails";
+import PresentersList from "../../src/Presenter/PresentersList";
 
 const MenuIcon = ({ navigate }: any) => <Icon
   name='three-bars'
@@ -36,11 +39,13 @@ const screenOptionStyle = {
 const MainStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
-      <Stack.Screen options={{headerShown:false}} name="Home" component={DrawerNavigator} />
+      <Stack.Screen options={{ headerShown: false }} name="Home" component={DrawerNavigator} />
       {/* screens added here will be part od drawer */}
-      <Stack.Screen options={{title:'Presenters'}} name="PresentersList" component={PresentersList} />
-      <Stack.Screen options={{title:'Presenter Details'}} name="PresenterDetails" component={PresenterDetails} />
-      <Stack.Screen  options={{title:'About Us'}} name="AboutUs" component={AboutUs} />
+      <Stack.Screen options={{ title: 'Presenters' }} name="PresentersList" component={PresentersList} />
+      <Stack.Screen options={{ title: 'WebViewScreen', headerShown: false }} name="WebViewScreen" component={WebViewScreen} />
+      <Stack.Screen options={{ title: 'About Presenter' }} name="PresenterDetails" component={PresenterDetails} />
+      <Stack.Screen options={{ title: 'About Us' }} name="AboutUs" component={AboutUs} />
+      <Stack.Screen options={{ title: 'Notify Updates' }} name="SendNotification" component={SendNotification} />
 
     </Stack.Navigator>
   );

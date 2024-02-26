@@ -26,12 +26,12 @@ export const drawerItem: NavItem[] = [
     },
     {
         id: 3,
-        title: "Charities",
-        path: 'Details'
+        title: "Donation",
+        path: 'Donation'
     },
     {
         id: 4,
-        title: "News",
-        path: 'Details'
+        title: "SendNotification",
+        path: 'SendNotification'
     }
 ]

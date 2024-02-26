@@ -104,7 +104,9 @@ export type iDataObj = {
   id: number,
   name: string,
   image: string,
-  description: string
+  description: string,
+  PresenterPageURL?:string
+
 }
 export const booksCar = [
   {
@@ -136,9 +138,11 @@ export const booksCar = [
 export const aboutIYF: iDataObj[] = [
   {
     id: 1,
-    name: 'About the IYF',
+    name: 'About IYF',
     description: 'The annual IYF, organized by Parmarth Niketan (Rishikesh) in the sacred and heavenly state of Uttarakhand, the birthplace of Yoga and Yoga Capital of the World, is grounded in the authentic origin of Yoga.',
-    image: 'https://internationalyogafestival.org/wp-content/uploads/2019/05/about-thumb.jpg'
+    image: 'https://internationalyogafestival.org/wp-content/uploads/2019/05/about-thumb.jpg',
+    PresenterPageURL:'https://internationalyogafestival.org/about/'
+    
   },
   {
     id: 2,
@@ -150,13 +154,16 @@ export const aboutIYF: iDataObj[] = [
     id: 3,
     name: 'IYF History',
     description: 'From a small festival first organized in 1999, to a festival which now brings hundreds from all over the world, read here about the history of the IYF.',
-    image: 'https://internationalyogafestival.org/wp-content/uploads/2019/05/history-thumb.jpg'
+    image: 'https://internationalyogafestival.org/wp-content/uploads/2019/05/history-thumb.jpg',
+    PresenterPageURL:'https://internationalyogafestival.org/history/'
   },
   {
     id: 4,
     name: 'Our Program',
     description: 'IYF’s program includes over 70 hours of Yoga classes from world class Yoga teachers, plus evening discussions with some of India’s leading spiritual leaders.',
-    image: 'https://internationalyogafestival.org/wp-content/uploads/2019/05/program-thumb.jpg'
+    image: 'https://internationalyogafestival.org/wp-content/uploads/2019/05/program-thumb.jpg',
+    PresenterPageURL:'https://internationalyogafestival.org/program/'
+
   }
 ]
 
