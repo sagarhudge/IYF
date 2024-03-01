@@ -100,13 +100,7 @@ const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
           }}>
             Register for IYF 2024 Festival !
           </Button>
-          <Button textColor='#fff' buttonColor='green' style={{ marginHorizontal: 16, marginBottom: 16 }} mode="contained" onPress={() => {
-            const data = { PresenterPageURL: 'https://divineshaktifoundation.org/donate/' }
-
-            webViewNavigate(data, "Donation")
-          }}>
-            Donation
-          </Button>
+          
         </View>
         {/* about IYF */}
         <View>

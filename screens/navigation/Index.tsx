@@ -16,7 +16,8 @@ export const theme = {
     primary: '#f74010',
     secondary: '#FEBC92',
     tertiary: '#FFD5B2',
-    background: '#FFF9F2'
+    background: '#FFF9F2',
+    light: '#fff6f3'
   }
 };
 

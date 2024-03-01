@@ -95,7 +95,8 @@ export const testimonials = [
     pdf: '',
     name: 'Mario',
     description: 'Thank you, to Pujya Swami Chidanand Saraswatiji Maharaj, Sadhvi Bhagawati Saraswati, the talented students, volunteers, spiritual leaders, dignitaries, yoga masters, sacred music masters, and all the participants from all over the world. The International Yoga Festival creates a beautiful spiritual space to be, discover, and feel the power of universe.',
-    image: ''
+    image: '',
+    
 
   }
 ]
@@ -106,6 +107,7 @@ export type iDataObj = {
   image: string,
   description: string,
   PresenterPageURL?:string
+  nav?:string
 
 }
 export const booksCar = [
@@ -137,6 +139,20 @@ export const booksCar = [
 
 export const aboutIYF: iDataObj[] = [
   {
+    id: 5,
+    name: 'Donation',
+    description: 'Make a donation',
+    image: 'https://tse1.mm.bing.net/th?id=OIP.nMM8vwnpZjigana2e42mvQAAAA&pid=Api&P=0&h=220',
+    PresenterPageURL:'https://divineshaktifoundation.org/donate/'
+    
+  },{
+    id: 5,
+    name: 'Schedules',
+    description: 'Schedules',
+    image: 'https://tse1.mm.bing.net/th?id=OIP.nMM8vwnpZjigana2e42mvQAAAA&pid=Api&P=0&h=220',
+    nav:'Schedules'
+  },
+  {
     id: 1,
     name: 'About IYF',
     description: 'The annual IYF, organized by Parmarth Niketan (Rishikesh) in the sacred and heavenly state of Uttarakhand, the birthplace of Yoga and Yoga Capital of the World, is grounded in the authentic origin of Yoga.',
@@ -148,7 +164,8 @@ export const aboutIYF: iDataObj[] = [
     id: 2,
     name: 'Our Presenters',
     description: 'Practise and learn from masters from the Traditional Yoga Lineages from India, as well as masters of International yoga schools & styles.',
-    image: 'https://internationalyogafestival.org/wp-content/uploads/2019/05/presenters-thumb.jpg'
+    image: 'https://internationalyogafestival.org/wp-content/uploads/2019/05/presenters-thumb.jpg',
+    nav:'PresentersList'
   },
   {
     id: 3,

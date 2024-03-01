@@ -36,7 +36,7 @@ const PresentersGrid = ({ title, data, navigation }: iProps) => {
                             const data = { PresenterPageURL: item?.PresenterPageURL}
 
                             webViewNavigate(data, item?.name || '')
-                        } else navigation?.navigate('PresentersList')
+                        } else navigation?.navigate(item.nav)
                     }}
                     style={{
                         flex: 1,

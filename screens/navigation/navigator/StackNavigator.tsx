@@ -12,6 +12,7 @@ import WebViewScreen from "../../src/WebView";
 import SendNotification from "../../src/SendNotification";
 import PresenterDetails from "../../src/Presenter/PresenterDetails";
 import PresentersList from "../../src/Presenter/PresentersList";
+import Schedules from "../../src/schedule/Schedules";
 
 const MenuIcon = ({ navigate }: any) => <Icon
   name='three-bars'
@@ -46,6 +47,7 @@ const MainStackNavigator = () => {
       <Stack.Screen options={{ title: 'About Presenter' }} name="PresenterDetails" component={PresenterDetails} />
       <Stack.Screen options={{ title: 'About Us' }} name="AboutUs" component={AboutUs} />
       <Stack.Screen options={{ title: 'Notify Updates' }} name="SendNotification" component={SendNotification} />
+      <Stack.Screen options={{ title: 'Schedules' }} name="Schedules" component={Schedules} />
 
     </Stack.Navigator>
   );
