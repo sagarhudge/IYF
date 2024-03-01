@@ -15,13 +15,13 @@ function App(): React.JSX.Element {
 
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-        onDisplayNotification(remoteMessage.notification)
-  });
+      onDisplayNotification(remoteMessage.notification)
+    });
 
     return unsubscribe;
   }, []);
 
-  
+
   useEffect(() => {
     getToken();
     requestPermission();

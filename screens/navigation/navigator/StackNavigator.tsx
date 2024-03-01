@@ -2,7 +2,7 @@
 
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import HomeScreen from "../../Home";
+import Home from "../../Home";
 import AboutUs from "../../src/about/AboutUs";
 import DrawerNavigator from "./DrawerNavigator";
 

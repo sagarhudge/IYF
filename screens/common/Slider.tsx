@@ -5,10 +5,11 @@ import { mainSliderArray } from '../store/ArrayConst';
 const { width } = Dimensions.get("window");
 const height = width * 0.6;
 
-const Slider = () => {
+const Slider: React.FC = () => {
 
     const [active, setActive] = useState(0);
 
+    
     function onChange({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) {
         const slide = Math.ceil(nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width);
         if (slide !== active) {
@@ -37,7 +38,7 @@ const Slider = () => {
                     })
                 }
             </ScrollView>
-                        <View style={{ backgroundColor: '#00000040', padding: 16, position: 'absolute', width }}>
+            <View style={{ backgroundColor: '#00000040', padding: 16, position: 'absolute', width }}>
                 <Text style={{ color: 'white', textAlign: 'center' }}>{mainSliderArray[active]?.message}</Text>
 
             </View>

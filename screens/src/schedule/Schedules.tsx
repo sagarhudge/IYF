@@ -4,6 +4,8 @@ import moment from 'moment';
 import { Subheading, Title } from 'react-native-paper';
 import { theme } from '../../navigation/Index';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { HomeStackParams } from '../../navigation/types';
 
 interface Event {
     time: string;
@@ -16,7 +18,12 @@ interface DateItem {
     events: Event[];
 }
 
-const Schedules: React.FC = () => {
+
+type props = {
+    navigation: StackNavigationProp<HomeStackParams>
+}
+const Schedules: React.FC<props> = (props: props): JSX.Element => {
+
     const [data, setData] = useState<DateItem[]>([]);
     const [selected, setSelected] = useState<string>('');
 

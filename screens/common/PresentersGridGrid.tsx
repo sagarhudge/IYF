@@ -14,9 +14,7 @@ type iProps = {
 }
 
 
-
-const PresentersGrid = ({ title, data, navigation }: iProps) => {
-
+const PresentersGrid: React.FC<iProps> = ({ title, data, navigation }: iProps) => {
 
     function webViewNavigate(payload: any, title: string) {
 
@@ -33,7 +31,7 @@ const PresentersGrid = ({ title, data, navigation }: iProps) => {
                 <TouchableOpacity
                     onPress={() => {
                         if (item?.PresenterPageURL) {
-                            const data = { PresenterPageURL: item?.PresenterPageURL}
+                            const data = { PresenterPageURL: item?.PresenterPageURL }
 
                             webViewNavigate(data, item?.name || '')
                         } else navigation?.navigate(item.nav)
@@ -45,10 +43,10 @@ const PresentersGrid = ({ title, data, navigation }: iProps) => {
                         alignItems: 'center'
                     }}>
                     <Avatar.Image size={80} source={{ uri: item.image }} />
-                    <Subheading style={{ marginVertical: 8 }}>{item.name}</Subheading>
+                    <Subheading style={{ marginVertical: 8, fontSize: 14 }}>{item.name}</Subheading>
                 </TouchableOpacity>
             )}
-            numColumns={2}
+            numColumns={3}
         // keyExtractor={(item) => item.id}
         />
 

@@ -5,6 +5,7 @@ import { SafeAreaView, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { theme } from '../navigation/Index';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { ApiService } from '../utils/ApiServices';
 
 type props = {
     navigation: any
@@ -22,6 +23,17 @@ const SendNotification: React.FC<props> = (props: props): JSX.Element => {
     const [title, setTitle] = React.useState('')
     const [message, setMessage] = React.useState('')
 
+    async function postNotification() {
+
+        const body = { "title": title, "body": message }
+        const resp: any = await ApiService.postData('', body);
+        if (resp) {
+            Alert.alert('Notification', 'Notification Sent Successfully')
+
+        }
+        console.log('notification', resp)
+
+    }
 
     return (<SafeAreaView style={{ backgroundColor: '#fff' }}>
 
@@ -57,8 +69,6 @@ const SendNotification: React.FC<props> = (props: props): JSX.Element => {
                     Verify Account
                 </Button>
             </View> :
-
-
                 <View>
                     <TextInput
                         label="Notification Title"
@@ -73,10 +83,10 @@ const SendNotification: React.FC<props> = (props: props): JSX.Element => {
                         />
                     </View>
 
-                    <Button textColor='#fff' buttonColor={theme.colors.primary} style={{ marginHorizontal: 16, marginBottom: 16 }} mode="contained" onPress={() => {
-                        //call api here
-                        Alert.alert('Update sent successfully')
-                        setValid(!validUser)
+                    <Button disabled={title == '' || message == ''} textColor='#fff' buttonColor={theme.colors.primary} style={{ marginHorizontal: 16, marginBottom: 16 }} mode="contained" onPress={() => {
+
+                        postNotification()
+
                     }}>
                         Send Updates
                     </Button>

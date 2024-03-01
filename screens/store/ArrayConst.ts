@@ -142,14 +142,14 @@ export const aboutIYF: iDataObj[] = [
     id: 5,
     name: 'Donation',
     description: 'Make a donation',
-    image: 'https://tse1.mm.bing.net/th?id=OIP.nMM8vwnpZjigana2e42mvQAAAA&pid=Api&P=0&h=220',
+    image: 'https://tse4.mm.bing.net/th?id=OIP.4TOhZPTNZRQ5qKpNU-TXAQHaHa&pid=Api&P=0&h=220',
     PresenterPageURL:'https://divineshaktifoundation.org/donate/'
     
   },{
     id: 5,
     name: 'Schedules',
     description: 'Schedules',
-    image: 'https://tse1.mm.bing.net/th?id=OIP.nMM8vwnpZjigana2e42mvQAAAA&pid=Api&P=0&h=220',
+    image: 'https://www.parmarth.org/wp-content/uploads/2018/03/easterneye532018.jpg',
     nav:'Schedules'
   },
   {

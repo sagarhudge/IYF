@@ -1,7 +1,6 @@
-import { Alert, Dimensions, Linking, SafeAreaView, View } from 'react-native';
+import { Alert, Dimensions, Linking, SafeAreaView, ScrollView, View } from 'react-native';
 import React, { useEffect } from 'react';
 import Slider from './common/Slider';
-import { ScrollView } from 'react-native-gesture-handler';
 import { aboutIYF, booksCar, presenterData, purchase, testimonials } from './store/ArrayConst';
 import Testimonials from './common/Testimonials';
 import { Avatar, Button, Headline, Subheading } from 'react-native-paper';
@@ -12,7 +11,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { HomeStackParams } from './navigation/types';
 import PresentersGrid from './common/PresentersGridGrid';
 import { PermissionsAndroid } from 'react-native';
-import { onDisplayNotification } from './utils/Notification';
+import { LocaleStorage } from './utils/LocaleStorage';
 
 const { width } = Dimensions.get("window");
 const height = width * 0.9;
@@ -24,11 +23,9 @@ type props = {
 
 useEffect(() => {
   PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
-
 }, [])
 
-const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
-
+const Home: React.FC<props> = (props: props): JSX.Element => {
 
   const applyHorizontalScroll = (child: any): any => {
     return <ScrollView
@@ -43,13 +40,18 @@ const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
     </ScrollView>
   }
 
+ 
 
+  // async function postDeviceId(url: string) {
 
-  // function postNotification(url: string, payload: any) {
+  //   const token = await LocaleStorage.getDeviceId();
 
-  //   const body = { "title": "Schedule Change", "body": "This particular event has been changed" }
-  //   const body2 = {
-  //     device_id: '',
+  //   if (token === '') {
+  //     return;
+  //   }
+
+  //   const body = {
+  //     device_id: token,
   //     email: ''
   //   }
 
@@ -61,11 +63,11 @@ const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
   //       'Content-Type': 'application/json',
 
   //     },
-  //     body: JSON.stringify(payload),
+  //     body: JSON.stringify(body),
   //   }).then((response: any) => {
   //     console.log('Response', response)
   //   });
-  //     }
+  // }
 
 
   function webViewNavigate(payload: any, title: string) {
@@ -76,8 +78,6 @@ const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#dcdcdc' }}>
-
-
       <ScrollView>
 
         <Slider />
@@ -91,7 +91,7 @@ const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
 
         {/* adverisement */}
         <View>
-          <Image style={{ width, height: 90, paddingHorizontal: 16 }} source={{ uri: 'https://internationalyogafestival.org/wp-content/uploads/2023/08/Logo-Top51.png' }} />
+          <Image resizeMode='contain' style={{ width, height: 90 }} source={{ uri: 'https://internationalyogafestival.org/wp-content/uploads/2023/08/Logo-Top51.png' }} />
 
           <Button textColor='#fff' buttonColor='#d14158' style={{ marginHorizontal: 16, marginBottom: 16 }} mode="contained" onPress={() => {
             const data = { PresenterPageURL: 'https://internationalyogafestival.org/register/' }
@@ -100,7 +100,7 @@ const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
           }}>
             Register for IYF 2024 Festival !
           </Button>
-          
+
         </View>
         {/* about IYF */}
         <View>
@@ -129,7 +129,6 @@ const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
 
         <View style={{ marginTop: 16, backgroundColor: 'white' }}>
           <Headline style={{ marginHorizontal: 16, marginVertical: 20 }}>Testimonials</Headline>
-
           <Testimonials data={testimonials} />
         </View>
 
@@ -139,4 +138,4 @@ const HomeScreen: React.FC<props> = (props: props): JSX.Element => {
   );
 };
 
-export default HomeScreen;
+export default Home;
