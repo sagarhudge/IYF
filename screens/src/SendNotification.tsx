@@ -23,7 +23,7 @@ const SendNotification: React.FC<props> = (props: props): JSX.Element => {
     
     async function verifyUser() {
         const body = { "username": name, "password": password }
-        const resp: any = await ApiService.postData('/admin/password', body);
+        const resp: any = await ApiService.postData('admin/password', body);
         console.log('notification', resp);
 
         if (resp) {

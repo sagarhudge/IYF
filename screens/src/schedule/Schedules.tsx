@@ -23,7 +23,7 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
 
 
   async function getPresentrersSchedule() {
-    const resp: any = await ApiService.getData('/event/get');
+    const resp: any = await ApiService.getData('event/get');
     console.log('getPresentrersSchedule', resp);
 
     if (resp) {
@@ -35,7 +35,7 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
 
   async function updateSchedule(body: any) {
 
-    const resp: any = await ApiService.updateData('/event/update', body);
+    const resp: any = await ApiService.updateData('event/update', body);
     console.log('updateSchedule', resp);
 
     if (resp) {

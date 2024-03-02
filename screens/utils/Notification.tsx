@@ -75,7 +75,7 @@ export async function getToken() {
             device_id: token,
             email: ''
         }
-        const resp = await ApiService.postData('/device', body);
+        const resp = await ApiService.postData('device', body);
         console.log('token', resp)
         LocaleStorage.setDeviceId(token)
     }
