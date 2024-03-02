@@ -1,56 +1,51 @@
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Agenda } from 'react-native-calendars';
-import { Caption, Title } from 'react-native-paper';
+import { Subheading, Title } from 'react-native-paper';
 import { theme } from '../../navigation/Index';
 import NotificationDialog from './component/NotificationDialog';
 import { formatTime } from '../../utils/DateFormatters';
-const payload = [
-  {
-    "id": "7cdad0bd-db42-4622-9e45-30c70a2eba0a",
-    "name": "Kundalini Sadhana",
-    "from_time": "2024-03-08T04:00:00Z",
-    "to_time": "2024-03-08T05:00:00Z",
-    "place": "tent",
-    "presenter_name": "Anshul Verma"
-  },
-  {
-    "id": "46ccefe8-3a6e-4aec-adf6-af9ab5f837fe",
-    "name": "Vedic Chanting",
-    "from_time": "2024-03-08T06:00:00Z",
-    "to_time": "2024-03-08T07:30:00Z",
-    "place": "Satsang Hall",
-    "presenter_name": "Sadhvi Ji"
-  },
-  {
-    "id": "46adf78a-3eab-4b0f-972e-80963907c7ab",
-    "name": "Life Management",
-    "from_time": "2024-03-09T06:00:00Z",
-    "to_time": "2024-03-09T07:30:00Z",
-    "place": "Satsang Hall",
-    "presenter_name": "Apoorv V"
-  },
-  {
-    "id": "fb31b8dc-ee9e-43a5-a5a3-1788bee35936",
-    "name": "Hath Yog",
-    "from_time": "2024-03-09T06:00:00Z",
-    "to_time": "2024-03-09T07:30:00Z",
-    "place": "Yoga Hall",
-    "presenter_name": "Baba Ramdev"
-  }
-]
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { ApiService } from '../../utils/ApiServices';
+ 
 const Schedules: React.FC = ({ navigagtion, route }: any) => {
   const [items, setItems] = useState<{ [key: string]: any }>({});
   const [selectedDate, setSelectedDate] = useState<string>('2024-03-08'); // State to hold the selected date
-  const [isAdmin] = useState<boolean>(route?.params?.isAdmin || true)
+  const [isAdmin] = useState<boolean>(route?.params?.isAdmin)
   const [show, setShow] = useState<boolean>(false)
   const [data, setData] = useState<any>({})
   const [schedules, setSchedules] = useState<any>()
 
   useEffect(() => {
-    setSchedules(payload)
+    getPresentrersSchedule();
   }, [])
+
+
+  async function getPresentrersSchedule() {
+    const resp: any = await ApiService.getData('/event/get');
+    console.log('getPresentrersSchedule', resp);
+
+    if (resp) {
+      setSchedules(resp);
+      // props.navigation.replace('Schedules', { isAdmin: true });
+    }
+
+  }
+
+  async function updateSchedule(body: any) {
+
+    const resp: any = await ApiService.updateData('/event/update', body);
+    console.log('updateSchedule', resp);
+
+    if (resp) {
+      // props.navigation.replace('Schedules', { isAdmin: true });
+
+      Alert.alert('Updates', 'Schedule Updated Successfully')
+    }
+
+  }
+
 
   const loadItems = (day: any) => {
 
@@ -63,14 +58,19 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
 
       const selectedDate = day.dateString;
       setSelectedDate(selectedDate)
-      const selectedItems = fetchItemsForDate(selectedDate, day); // Implement this function to fetch items based on the selected date
-      const newItems: { [key: string]: any } = {};
-      newItems[selectedDate] = selectedItems;
-      setItems(newItems);
+      dateSelected(selectedDate)
     }
 
   };
-  const fetchItemsForDate = (date: string, day: any) => {
+
+
+  function dateSelected(selectedDate: any) {
+    const selectedItems = fetchItemsForDate(selectedDate); // Implement this function to fetch items based on the selected date
+    const newItems: { [key: string]: any } = {};
+    newItems[selectedDate] = selectedItems;
+    setItems(newItems);
+  }
+  const fetchItemsForDate = (date: string) => {
 
     return schedules.filter((data: any) => moment(data.from_time).format('YYYY-MM-DD') === date);
   };
@@ -81,21 +81,24 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
   }
 
   const renderItem = (item: any) => (
-    <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: !timeBetween(item.from_time, item.to_time) ? theme.colors.light : '#fff', marginVertical: 16, padding: 16 }}>
-      <Text>{item.icon}</Text>
-      <View style={{ marginHorizontal: 26 }}>
-        <Title>{item.presenter_name}</Title>
-        <Caption>{`${formatTime(item.from_time)} - ${formatTime(item.to_time)}`}</Caption>
-        <Caption>{item.place}</Caption>
+    <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', marginVertical: 16, padding: 16 }}>
+      <View style={{ width: '90%' }}>
+        <Title style={{ color: theme.colors.primary }}>{item?.name}</Title>
+        <Subheading>{item?.presenter_name}</Subheading>
+
+        <Subheading>{`Location : ${item?.place}`}</Subheading>
+        <Subheading>{`TImeing : ${formatTime(item?.from_time)} - ${formatTime(item?.to_time)}`}</Subheading>
+
       </View>
 
       {isAdmin &&
         <TouchableOpacity
+          style={{ width: '10%' }}
           onPress={() => {
             setData(item);
             setShow(!show)
           }}>
-          <Text>Edit</Text>
+          <Icon name={'lead-pencil'} size={26} />
         </TouchableOpacity>}
 
     </View>
@@ -125,17 +128,15 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
         onSave={function (data: any): void {
           let index = schedules.findIndex((obj: any) => obj?.id === data?.id);
 
-          console.log('----', data);
-
           if (index !== -1) {
             schedules[index] = data;
-            setSchedules([...schedules])
+            setSchedules([...schedules]);
+            dateSelected(selectedDate);
+            updateSchedule(data)
           } else {
             // Handle case where id is not found
             console.log('Object with id not found');
           }
-
-          console.log('---2---', schedules[index]);
           setShow(false);
         }}
         eventData={data} />}
