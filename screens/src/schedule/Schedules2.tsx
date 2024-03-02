@@ -50,10 +50,10 @@ const Schedules2: React.FC<props> = (props: props): JSX.Element => {
     }, []);
 
     function formatDate(date: any) {
-        // const currentDateUtc = moment.utc();
+        // const currentDateUtc = moment;
         // const formattedDateUtc = currentDateUtc.format('YYYY-MM-DD HH:mm:ss');
 
-        return moment(date).utc().format('DD-MM-YY, HH:mm A')
+        return moment(date).format('DD-MM-YY, HH:mm A')
     }
 
     return (

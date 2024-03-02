@@ -9,7 +9,11 @@ type iPorps = {
 
 const TimePickerOption: React.FC<iPorps> = ({ showPicker, title, onChangeTime, time, mode }: iPorps) => {
 
+  console.log('TimePickerOption', time)
+
   const handleDateChange = (event: any, date: Date | undefined) => {
+    console.log('handleDateChange', date)
+
     if (date && event.type !== 'dismissed') {
       onChangeTime(date, title)
     }else{
@@ -22,10 +26,11 @@ const TimePickerOption: React.FC<iPorps> = ({ showPicker, title, onChangeTime, t
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       {showPicker && (
         <DateTimePicker
-          minimumDate={new Date(8, 3, 2024)}
-          maximumDate={new Date(14, 3, 2024)}
+          minimumDate={new Date('2024-03-08')}
+          maximumDate={new Date('2024-03-14')}
           testID="timePicker"
           value={time}
+          is24Hour={true}
           mode={mode}
           display="default"
           onChange={handleDateChange}

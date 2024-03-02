@@ -5,12 +5,14 @@ import { Agenda } from 'react-native-calendars';
 import { Caption, Title } from 'react-native-paper';
 import { theme } from '../../navigation/Index';
 import NotificationDialog from './component/NotificationDialog';
+import { formatTime } from '../../utils/DateFormatters';
 
 const Schedules: React.FC = ({ navigagtion, route }: any) => {
   const [items, setItems] = useState<{ [key: string]: any }>({});
   const [selectedDate, setSelectedDate] = useState<string>('2024-03-08'); // State to hold the selected date
-  const [isAdmin] = useState<boolean>(route?.params?.isAdmin||true)
+  const [isAdmin] = useState<boolean>(route?.params?.isAdmin || true)
   const [show, setShow] = useState<boolean>(false)
+  const [data, setData] = useState<any>({})
 
   const payload = [
     {
@@ -56,7 +58,7 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
 
     // Check if the provided day belongs to the current month
     if (day.year === currentYear && day.month === currentMonth) {
- 
+
       const selectedDate = day.dateString;
       setSelectedDate(selectedDate)
       const selectedItems = fetchItemsForDate(selectedDate, day); // Implement this function to fetch items based on the selected date
@@ -68,17 +70,12 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
   };
   const fetchItemsForDate = (date: string, day: any) => {
 
-    return payload.filter((data: any) => moment(data.from_time).utc().format('YYYY-MM-DD') === date);
+    return payload.filter((data: any) => moment(data.from_time).format('YYYY-MM-DD') === date);
   };
 
   function timeBetween(from_time: string, to_time: string) {
-    const currentTime = moment().utc().format('HH:mm A');
-    // Example from_time and to_time from your 'item'
-    const fromTime = moment(from_time).utc().format('HH:mm A');
-    const toTime = moment(to_time).utc().format('HH:mm A');
-    // Check if the current time falls within the range
-    const isBetween = moment(currentTime, 'HH:mm A').utc().isBetween(fromTime, toTime);
-    return isBetween;
+ 
+    return true;
   }
 
   const renderItem = (item: any) => (
@@ -86,11 +83,18 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
       <Text>{item.icon}</Text>
       <View style={{ marginHorizontal: 26 }}>
         <Title>{item.presenter_name}</Title>
-        <Caption>{`${moment(item.from_time).utc().format('HH:mm A')} - ${moment(item.to_time).utc().format('HH:mm A')}`}</Caption>
+        <Caption>{`${formatTime(item.from_time)} - ${formatTime(item.to_time)}`}</Caption>
         <Caption>{item.place}</Caption>
       </View>
 
-      {isAdmin && <TouchableOpacity onPress={() => setShow(!show)}><Text>Edit</Text></TouchableOpacity>}
+      {isAdmin &&
+        <TouchableOpacity
+          onPress={() => {
+            setData(item);
+            setShow(!show)
+          }}>
+          <Text>Edit</Text>
+        </TouchableOpacity>}
 
     </View>
   );
@@ -114,12 +118,12 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
         minDate={'2024-03-07'}
         maxDate={'2024-03-15'}
       />
-      <NotificationDialog
+      {show && <NotificationDialog
         visible={show}
         onSave={function (): void {
           setShow(false);
         }}
-      />
+        eventData={data} />}
     </View>
   );
 };
