@@ -9,7 +9,7 @@ type iPorps = {
 
 const TimePickerOption: React.FC<iPorps> = ({ showPicker, title, onChangeTime, time, mode }: iPorps) => {
 
-  console.log('TimePickerOption', time)
+  // console.log('TimePickerOption', time)
 
   const handleDateChange = (event: any, date: Date | undefined) => {
     console.log('handleDateChange', date)

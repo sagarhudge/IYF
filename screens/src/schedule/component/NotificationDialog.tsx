@@ -8,15 +8,13 @@ import { formatDates, formatTime } from '../../../utils/DateFormatters';
 
 type iProps = {
     visible: boolean,
-    onSave: () => void,
+    onSave: (data: any) => void,
     eventData: any
 }
 
 const NotificationDialog: React.FC<iProps> = ({ visible, onSave, eventData }: iProps) => {
 
     const [data, setData] = useState<any>(eventData)
-    const [startDate, setStartDate] = useState(formatTime(eventData?.from_time));
-    const [endDate, setEndDate] = useState(formatTime(eventData?.to_time));
     const [showPicker, setShowPicker] = useState(false);
     const [pickerTitle, setPickerTitle] = useState('start');
 
@@ -35,11 +33,12 @@ const NotificationDialog: React.FC<iProps> = ({ visible, onSave, eventData }: iP
         setShowPicker(false);
         const newDate = time;
 
-        console.log('onChangeDate', time, '\n', newDate);
+        // console.log('onChangeDate', time, '\n', newDate);
 
         if (time == undefined) {
             return;
         }
+
         if (mode == 'date') {
 
             if (title === 'start') {
@@ -60,40 +59,9 @@ const NotificationDialog: React.FC<iProps> = ({ visible, onSave, eventData }: iP
 
     };
 
-    // function parseDate(dateStr: string) {
-    //     const [day, month, year] = dateStr.split(' ');
-    //     return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-    // }
-
-    function parseDate(dateTimeStr: string): Date {
-        const parts = dateTimeStr.split(' ');
-
-        if (parts.length !== 5) {
-            // Ensure the date string has the correct format
-            console.error('Invalid date string format');
-            return new Date();
-        }
-
-        // Extract day, month, year, hour, minute, and AM/PM components
-        const [day, month, year, time, ampm] = parts;
-
-        // Extract hour and minute components from the time string
-        const [hour, minute] = time.split(':').map(part => parseInt(part));
-
-        // Convert 12-hour format to 24-hour format
-        let parsedHour = hour;
-        if (ampm === 'PM' && hour < 12) {
-            parsedHour += 12;
-        } else if (ampm === 'AM' && hour === 12) {
-            parsedHour = 0;
-        }
-
-        // Create a new Date object using the components
-        return new Date(parseInt(year), parseInt(month) - 1, parseInt(day), parsedHour, minute);
-    }
 
     return <Portal>
-        <Dialog visible={visible} onDismiss={() => onSave()}>
+        <Dialog visible={visible} onDismiss={() => onSave(data)}>
             <Dialog.Title>Schedule Event</Dialog.Title>
             <Dialog.Content>
 
@@ -138,8 +106,8 @@ const NotificationDialog: React.FC<iProps> = ({ visible, onSave, eventData }: iP
 
             </Dialog.Content>
             <Dialog.Actions>
-                <Button onPress={() => onSave()}>Cancel</Button>
-                <Button onPress={() => onSave()}>Save</Button>
+                <Button onPress={() => onSave(undefined)}>Cancel</Button>
+                <Button onPress={() => onSave(data)}>Save</Button>
             </Dialog.Actions>
         </Dialog>
     </Portal>
