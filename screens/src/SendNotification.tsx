@@ -62,9 +62,11 @@ const SendNotification: React.FC<props> = (props: props): JSX.Element => {
 
                 <Button textColor='#fff' buttonColor={theme.colors.primary} style={{ marginHorizontal: 16, marginBottom: 16 }} mode="contained" onPress={() => {
                     //call api here
-                    Alert.alert('Account Validated')
+                    // Alert.alert('Account Validated')
 
-                    setValid(!validUser)
+                    // setValid(!validUser)
+
+                    props.navigation.replace('Schedules',{isAdmin:true})
                 }}>
                     Verify Account
                 </Button>
