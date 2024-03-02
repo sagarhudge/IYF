@@ -1,9 +1,11 @@
 import APIResponseParser from "./APIResponseParser";
 
-export const Base_URL = "";
+export const Base_URL = "http://192.168.1.7:8080/";
 
 async function postData(url: string, payload: any) {
 
+
+    console.log('Base_URL',Base_URL + url)
     return fetch(Base_URL + url, {
         method: 'POST',
         headers: {
@@ -26,14 +28,14 @@ async function getData(url: string) {
     }).then((response: any) => APIResponseParser.handleResponse(response)).catch(e => e);
 }
 
-async function updateData(url: string, payload: any) {
+async function updateData(url: string, payload: any,token:string) {
 
     return fetch(Base_URL + url, {
         method: 'PATCH',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-
+            'x-access-token':token 
         },
         body: JSON.stringify(payload),
     }).then((response: any) => APIResponseParser.handleResponse(response)).catch(e => e);
