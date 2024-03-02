@@ -1,8 +1,6 @@
-import { LocaleStorage } from "./LocaleStorage";
+import APIResponseParser from "./APIResponseParser";
 
 export const Base_URL = "";
-
-
 
 async function postData(url: string, payload: any) {
 
@@ -11,10 +9,9 @@ async function postData(url: string, payload: any) {
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-
         },
         body: JSON.stringify(payload),
-    }).then((response: any) => response).catch(e => e);
+    }).then((response: any) => APIResponseParser.handleResponse(response)).catch(e => e);
 }
 
 async function getData(url: string) {
@@ -26,7 +23,7 @@ async function getData(url: string) {
             'Content-Type': 'application/json',
 
         },
-    }).then((response: any) => response).catch(e => e);
+    }).then((response: any) => APIResponseParser.handleResponse(response)).catch(e => e);
 }
 
 async function updateData(url: string, payload: any) {
@@ -39,13 +36,13 @@ async function updateData(url: string, payload: any) {
 
         },
         body: JSON.stringify(payload),
-    }).then((response: any) => response).catch(e => e);
+    }).then((response: any) => APIResponseParser.handleResponse(response)).catch(e => e);
 }
 
 
 
 
 export const ApiService = {
-    postData, getData,updateData
+    postData, getData, updateData
 
 }
