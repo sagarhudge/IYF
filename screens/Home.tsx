@@ -11,12 +11,9 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { HomeStackParams } from './navigation/types';
 import PresentersGrid from './common/PresentersGridGrid';
 import { PermissionsAndroid } from 'react-native';
-import { LocaleStorage } from './utils/LocaleStorage';
-
 const { width } = Dimensions.get("window");
 const height = width * 0.9;
-
-
+// import AshramMap from '../assets/images/empty.png'
 type props = {
   navigation: StackNavigationProp<HomeStackParams>
 }
@@ -80,6 +77,14 @@ const Home: React.FC<props> = (props: props): JSX.Element => {
           <PresentersGrid title={''} data={aboutIYF} navigation={props.navigation} />
         </View>
 
+        <View >
+
+          {/* <Subheading style={{ textAlign: 'center', backgroundColor: 'white', color: theme.colors.primary, paddingVertical: 16 }}>Ashram Map</Subheading> */}
+          <Image resizeMode='contain' style={{ width, height: 190 }} source={{ uri: 'https://internationalyogafestival.org/wp-content/uploads/2019/03/Ashram-Map.jpg' }} />
+
+
+
+        </View>
         {/* Books download */}
         <View style={{ marginTop: 16, backgroundColor: 'white' }}>
           <Headline style={{ marginHorizontal: 16, marginVertical: 20 }}>Learn About IYF 2023!</Headline>
@@ -99,7 +104,7 @@ const Home: React.FC<props> = (props: props): JSX.Element => {
 
         </View>
 
-        <View style={{padding: 16, backgroundColor: 'white' }}>
+        <View style={{ padding: 16, backgroundColor: 'white' }}>
           {/* <Headline style={{ marginHorizontal: 16, marginVertical: 20 }}>Testimonials</Headline> */}
           {/* <Testimonials data={testimonials} /> */}
 

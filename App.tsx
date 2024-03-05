@@ -26,15 +26,15 @@ function App(): React.JSX.Element {
         email: ''
       }
       const resp = await ApiService.postData('device', body);
-      console.log('token-updated', resp);
-      LocaleStorage.setDeviceId(token);
+      console.log('token-resp',resp)
+      if (resp)
+        LocaleStorage.setDeviceId(token);
     }
   }
 
   useEffect(() => {
-    console.log('--token---2', token)
 
-    // updatetoken();
+    updatetoken();
 
   }, [token]);
 
@@ -50,7 +50,6 @@ function App(): React.JSX.Element {
 
   async function getTokens() {
     const token = await getToken();
-    console.log('--token---', token)
     setToken(token);
   }
 
