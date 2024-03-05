@@ -138,23 +138,15 @@ export const booksCar = [
 ]
 
 export const aboutIYF: iDataObj[] = [
-  {
-    id: 5,
-    name: 'Admin Account',
-    description: 'Make a donation',
-    image: 'https://tse4.mm.bing.net/th?id=OIP.4TOhZPTNZRQ5qKpNU-TXAQHaHa&pid=Api&P=0&h=220',
-    // PresenterPageURL:'https://divineshaktifoundation.org/donate/'
-    nav:'SendNotification'
-    
-  }, {
-    id: 5,
+   {
+    id: 6,
     name: 'Donation',
     description: 'Make a donation',
     image: 'https://tse4.mm.bing.net/th?id=OIP.4TOhZPTNZRQ5qKpNU-TXAQHaHa&pid=Api&P=0&h=220',
     PresenterPageURL:'https://divineshaktifoundation.org/donate/'
     
   },{
-    id: 5,
+    id: 7,
     name: 'Schedules',
     description: 'Schedules',
     image: 'https://www.parmarth.org/wp-content/uploads/2018/03/easterneye532018.jpg',
@@ -189,6 +181,15 @@ export const aboutIYF: iDataObj[] = [
     image: 'https://internationalyogafestival.org/wp-content/uploads/2019/05/program-thumb.jpg',
     PresenterPageURL:'https://internationalyogafestival.org/program/'
 
+  },
+  {
+    id: 5,
+    name: 'Admin Account',
+    description: 'Make a donation',
+    image: 'https://tse4.mm.bing.net/th?id=OIP.4TOhZPTNZRQ5qKpNU-TXAQHaHa&pid=Api&P=0&h=220',
+    // PresenterPageURL:'https://divineshaktifoundation.org/donate/'
+    nav:'SendNotification'
+    
   }
 ]
 

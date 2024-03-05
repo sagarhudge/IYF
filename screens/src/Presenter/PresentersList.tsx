@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
 import { FlatList, SafeAreaView, View } from 'react-native';
-import { Avatar, Headline, Text, Title } from 'react-native-paper';
+import { Avatar, Title } from 'react-native-paper';
 import { theme } from '../../navigation/Index';
 import { dataPresenter } from '../../store/PresentersData';
 
@@ -15,17 +15,15 @@ type props = {
 
 const PresentersList: React.FC<props> = (props: props): JSX.Element => {
 
-
     return (<SafeAreaView style={{ backgroundColor: '#dcdcdc' }}>
 
         <ScrollView>
             <View>
-
                 <FlatList
                     scrollEnabled={false}
                     data={dataPresenter}
                     keyExtractor={(item: any, index: number) => `${item.item}-${index}`}
-                    renderItem={({ item, index }) => item.Name === "" ? <Title style={{padding: 16, color: theme.colors.primary }}>{item.header}</Title> : <TouchableOpacity
+                    renderItem={({ item, index }) => item.Name === "" ? <Title style={{ padding: 16, color: theme.colors.primary }}>{item.header}</Title> : <TouchableOpacity
                         onPress={() => item.PresenterPageURL !== '' && props.navigation.navigate('WebViewScreen', { data: { item } })}
                     >
                         <View

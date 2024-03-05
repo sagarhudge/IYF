@@ -69,11 +69,7 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
       (data: any) => moment(data.from_time).format('YYYY-MM-DD') === date,
     );
   };
-
-  function timeBetween(from_time: string, to_time: string) {
-    return true;
-  }
-
+ 
   const renderItem = (item: any) => (
     <View
       style={{

@@ -32,7 +32,6 @@ const PresentersGrid: React.FC<iProps> = ({ title, data, navigation }: iProps) =
                     onPress={() => {
                         if (item?.PresenterPageURL) {
                             const data = { PresenterPageURL: item?.PresenterPageURL }
-
                             webViewNavigate(data, item?.name || '')
                         } else navigation?.navigate(item.nav)
                     }}
