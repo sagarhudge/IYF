@@ -2,10 +2,9 @@
 import messaging from '@react-native-firebase/messaging';
 import { Alert } from 'react-native';
 import notifee from '@notifee/react-native';
-import { LocaleStorage } from './LocaleStorage';
-import { ApiService } from './ApiServices';
 
-export async function Notification() {
+
+export async function Notification(navigation: any) {
 
     // messaging()?.onMessage(async remoteMessage => {
     //     console.log('onMessage', remoteMessage)
@@ -14,8 +13,10 @@ export async function Notification() {
     // });
 
     messaging()?.onNotificationOpenedApp(remoteMessage => {
-        console.log('onNotificationOpenedApp', remoteMessage)
+        console.log('onNotificationOpenedApp', remoteMessage);
+        // navigation.navigate('Schedules');
     });
+    
 
     messaging()?.getInitialNotification().then((remoteNotify) => {
 

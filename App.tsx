@@ -13,20 +13,21 @@ import { Notification, getToken, onDisplayNotification, requestPermission } from
 import { LocaleStorage } from './screens/utils/LocaleStorage';
 import { ApiService } from './screens/utils/ApiServices';
 
-function App(): React.JSX.Element {
+function App({navigation}:any): React.JSX.Element {
 
   const [token, setToken] = useState<string>('')
-
 
   async function updatetoken() {
     const old = await LocaleStorage.getDeviceId();
     if (token && old !== token) {
+      
       const body = {
         device_id: token,
         email: ''
       }
+
       const resp = await ApiService.postData('device', body);
-      console.log('token-resp',resp)
+      console.log('token-resp', resp)
       if (resp)
         LocaleStorage.setDeviceId(token);
     }
@@ -34,7 +35,7 @@ function App(): React.JSX.Element {
 
   useEffect(() => {
 
-    updatetoken();
+    token !== '' && updatetoken();
 
   }, [token]);
 
@@ -56,7 +57,7 @@ function App(): React.JSX.Element {
   useEffect(() => {
     getTokens();
     requestPermission();
-    Notification()
+    Notification(navigation)
 
   }, [])
 

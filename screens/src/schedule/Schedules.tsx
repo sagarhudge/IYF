@@ -30,7 +30,7 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
     const resp: any = await ApiService.getData('event/get');
     console.log('getPresentrersSchedule', resp);
 
-    if (resp) {
+    if (resp && resp.length > 0) {
       setSchedules(resp);
       // props.navigation.replace('Schedules', { isAdmin: true });
     }
@@ -38,7 +38,7 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
 
   async function updateScheduleApi(body: any) {
     const resp: any = await ApiService.updateData('event/update', body, token);
-    console.log('updateSchedule', resp, token);
+    console.log('updateSchedule', resp?.Error);
 
     if (resp) {
       Alert.alert('Updates', 'Schedule Updated Successfully');
@@ -69,7 +69,7 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
       (data: any) => moment(data.from_time).format('YYYY-MM-DD') === date,
     );
   };
- 
+
   const renderItem = (item: any) => (
     <View
       style={{

@@ -82,8 +82,6 @@ const Home: React.FC<props> = (props: props): JSX.Element => {
           {/* <Subheading style={{ textAlign: 'center', backgroundColor: 'white', color: theme.colors.primary, paddingVertical: 16 }}>Ashram Map</Subheading> */}
           <Image resizeMode='contain' style={{ width, height: 190 }} source={{ uri: 'https://internationalyogafestival.org/wp-content/uploads/2019/03/Ashram-Map.jpg' }} />
 
-
-
         </View>
         {/* Books download */}
         <View style={{ marginTop: 16, backgroundColor: 'white' }}>
