@@ -40,34 +40,6 @@ const Home: React.FC<props> = (props: props): JSX.Element => {
     </ScrollView>
   }
 
- 
-
-  // async function postDeviceId(url: string) {
-
-  //   const token = await LocaleStorage.getDeviceId();
-
-  //   if (token === '') {
-  //     return;
-  //   }
-
-  //   const body = {
-  //     device_id: token,
-  //     email: ''
-  //   }
-
-
-  //   fetch(url, {
-  //     method: 'POST',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-
-  //     },
-  //     body: JSON.stringify(body),
-  //   }).then((response: any) => {
-  //     console.log('Response', response)
-  //   });
-  // }
 
 
   function webViewNavigate(payload: any, title: string) {
@@ -127,9 +99,15 @@ const Home: React.FC<props> = (props: props): JSX.Element => {
 
         </View>
 
-        <View style={{ marginTop: 16, backgroundColor: 'white' }}>
-          <Headline style={{ marginHorizontal: 16, marginVertical: 20 }}>Testimonials</Headline>
-          <Testimonials data={testimonials} />
+        <View style={{padding: 16, backgroundColor: 'white' }}>
+          {/* <Headline style={{ marginHorizontal: 16, marginVertical: 20 }}>Testimonials</Headline> */}
+          {/* <Testimonials data={testimonials} /> */}
+
+          <Button textColor='#fff' buttonColor='#d14158' style={{ marginHorizontal: 16, marginBottom: 16 }} mode="contained" onPress={() => {
+            props.navigation.navigate('SendNotification');
+          }}>
+            IYF Admin
+          </Button>
         </View>
 
       </ScrollView>

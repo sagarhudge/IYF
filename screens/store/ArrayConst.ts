@@ -182,15 +182,15 @@ export const aboutIYF: iDataObj[] = [
     PresenterPageURL:'https://internationalyogafestival.org/program/'
 
   },
-  {
-    id: 5,
-    name: 'Admin Account',
-    description: 'Make a donation',
-    image: 'https://tse4.mm.bing.net/th?id=OIP.4TOhZPTNZRQ5qKpNU-TXAQHaHa&pid=Api&P=0&h=220',
-    // PresenterPageURL:'https://divineshaktifoundation.org/donate/'
-    nav:'SendNotification'
+  // {
+  //   id: 5,
+  //   name: 'Admin Account',
+  //   description: 'Make a donation',
+  //   image: 'https://tse4.mm.bing.net/th?id=OIP.4TOhZPTNZRQ5qKpNU-TXAQHaHa&pid=Api&P=0&h=220',
+  //   // PresenterPageURL:'https://divineshaktifoundation.org/donate/'
+  //   nav:'SendNotification'
     
-  }
+  // }
 ]
 
 

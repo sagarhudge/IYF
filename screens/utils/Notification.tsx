@@ -69,16 +69,5 @@ export async function getToken() {
     // const tokenNew = messaging()?.onTokenRefresh(newToken => newToken);
     console.log("device_token", token);
 
-    const old = await LocaleStorage.getDeviceId();
-    if (old !== token) {
-        const body = {
-            device_id: token,
-            email: ''
-        }
-        const resp = await ApiService.postData('device', body);
-        console.log('token', resp)
-        LocaleStorage.setDeviceId(token)
-    }
-
     return token;
 };
