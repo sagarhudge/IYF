@@ -1,16 +1,16 @@
 import moment from 'moment';
-import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, TouchableOpacity, Alert} from 'react-native';
-import {Agenda} from 'react-native-calendars';
-import {Subheading, Title} from 'react-native-paper';
-import {theme} from '../../navigation/Index';
+import React, { useEffect, useState } from 'react';
+import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { Agenda } from 'react-native-calendars';
+import { Subheading, Title } from 'react-native-paper';
+import { theme } from '../../navigation/Index';
 import NotificationDialog from './component/NotificationDialog';
-import {formatTime} from '../../utils/DateFormatters';
+import { formatTime } from '../../utils/DateFormatters';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {ApiService} from '../../utils/ApiServices';
+import { ApiService } from '../../utils/ApiServices';
 
-const Schedules: React.FC = ({navigagtion, route}: any) => {
-  const [items, setItems] = useState<{[key: string]: any}>({});
+const Schedules: React.FC = ({ navigagtion, route }: any) => {
+  const [items, setItems] = useState<{ [key: string]: any }>({});
   const [selectedDate, setSelectedDate] = useState<string>('2024-03-08'); // State to hold the selected date
   const [isAdmin] = useState<boolean>(route?.params?.isAdmin);
   const token = isAdmin ? route?.params?.token : '';
@@ -60,12 +60,12 @@ const Schedules: React.FC = ({navigagtion, route}: any) => {
 
   function dateSelected(selectedDate: any) {
     const selectedItems = fetchItemsForDate(selectedDate); // Implement this function to fetch items based on the selected date
-    const newItems: {[key: string]: any} = {};
+    const newItems: { [key: string]: any } = {};
     newItems[selectedDate] = selectedItems;
     setItems(newItems);
   }
   const fetchItemsForDate = (date: string) => {
-    return schedules?.filter(
+    return schedules && schedules?.filter(
       (data: any) => moment(data.from_time).format('YYYY-MM-DD') === date,
     );
   };
@@ -83,8 +83,8 @@ const Schedules: React.FC = ({navigagtion, route}: any) => {
         marginVertical: 16,
         padding: 16,
       }}>
-      <View style={{width: '90%'}}>
-        <Title style={{color: theme.colors.primary}}>{item?.name}</Title>
+      <View style={{ width: '90%' }}>
+        <Title style={{ color: theme.colors.primary }}>{item?.name}</Title>
         <Subheading>{item?.presenter_name}</Subheading>
 
         <Subheading>{`Location : ${item?.place}`}</Subheading>
@@ -95,7 +95,7 @@ const Schedules: React.FC = ({navigagtion, route}: any) => {
 
       {isAdmin && (
         <TouchableOpacity
-          style={{width: '10%'}}
+          style={{ width: '10%' }}
           onPress={() => {
             setData(item);
             setShow(!show);
@@ -115,7 +115,7 @@ const Schedules: React.FC = ({navigagtion, route}: any) => {
   // const rowHasChanged = (r1: any, r2: any) => r1.name !== r2.name;
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <Agenda
         items={items}
         loadItemsForMonth={loadItems}
@@ -129,7 +129,7 @@ const Schedules: React.FC = ({navigagtion, route}: any) => {
         <NotificationDialog
           visible={show}
           onSave={function (data: any): void {
-            let index = schedules.findIndex((obj: any) => obj?.id === data?.id);
+            let index = schedules?.findIndex((obj: any) => obj?.id === data?.id);
 
             if (index !== -1) {
               schedules[index] = data;
