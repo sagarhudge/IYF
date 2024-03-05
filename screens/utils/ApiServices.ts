@@ -1,6 +1,6 @@
 import APIResponseParser from "./APIResponseParser";
 
-export const Base_URL = "http://192.168.1.7:8080/";
+export const Base_URL = "https://iyfestival-eea51.el.r.appspot.com/";
 
 async function postData(url: string, payload: any) {
 
