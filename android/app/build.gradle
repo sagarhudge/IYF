@@ -74,9 +74,9 @@ android {
 //    buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.iyf"
+    namespace "com.parmarth.iyf"
     defaultConfig {
-        applicationId "com.iyf"
+        applicationId "com.parmarth.iyf"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 3
