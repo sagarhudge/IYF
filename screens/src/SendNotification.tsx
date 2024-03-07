@@ -36,7 +36,7 @@ const SendNotification: React.FC<props> = (props: props): JSX.Element => {
         token: resp?.token_string,
       });
     } else {
-      Alert.alert("Failure", "Invalida Username or Pasword")
+      Alert.alert("Failure", "Invalid Username or Pasword")
     }
     setDisdable(false);
   }

@@ -9,6 +9,25 @@
       "client_info": {
         "mobilesdk_app_id": "1:854297519848:android:302213338e8a7543994b5d",
         "android_client_info": {
+          "package_name": "com.iyf"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYvcrMI0RxWiOJNe8qY3B6X6HK-dW7dzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854297519848:android:3e269fc5139b0bb2994b5d",
+        "android_client_info": {
           "package_name": "com.parmarth.iyf"
         }
       },

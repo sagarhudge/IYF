@@ -148,7 +148,7 @@ export const aboutIYF: iDataObj[] = [
   },{
     id: 7,
     name: 'Schedule',
-    description: 'Schedules',
+    description: 'Schedule',
     image: 'https://www.parmarth.org/wp-content/uploads/2018/03/easterneye532018.jpg',
     nav:'Schedules'
   },
