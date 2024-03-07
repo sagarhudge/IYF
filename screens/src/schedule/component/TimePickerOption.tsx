@@ -12,8 +12,7 @@ const TimePickerOption: React.FC<iPorps> = ({ showPicker, title, onChangeTime, t
   // console.log('TimePickerOption', time)
 
   const handleDateChange = (event: any, date: Date | undefined) => {
-    console.log('handleDateChange', date)
-
+ 
     if (date && event.type !== 'dismissed') {
       onChangeTime(date, title)
     }else{

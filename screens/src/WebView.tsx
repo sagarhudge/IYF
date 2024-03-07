@@ -15,8 +15,7 @@ type props = {
 
 const WebViewScreen: React.FC<props> = (props: props): JSX.Element => {
 
-    console.log('sadas', props.route.params)
-    const url = props?.route?.params?.data?.item?.PresenterPageURL || 'About Presenter'
+     const url = props?.route?.params?.data?.item?.PresenterPageURL || 'About Presenter'
     const title = props?.route?.params?.data?.title || ''
 
     return (<View style={{ flex: 1, backgroundColor: '#dcdcdc' }}>

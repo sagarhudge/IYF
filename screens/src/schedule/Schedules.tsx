@@ -28,8 +28,7 @@ const Schedules: React.FC = ({ navigagtion, route }: any) => {
 
   async function getPresentrersSchedule() {
     const resp: any = await ApiService.getData('event/get');
-    console.log('getPresentrersSchedule', resp);
-
+ 
     if (resp && resp.length > 0) {
       setSchedules(resp);
       // props.navigation.replace('Schedules', { isAdmin: true });

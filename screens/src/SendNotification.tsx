@@ -27,8 +27,7 @@ const SendNotification: React.FC<props> = (props: props): JSX.Element => {
     setDisdable(true);
     const body = { username: name, password: password };
     const resp: any = await ApiService.postData('admin/login', body);
-    console.log('notification', resp);
-
+ 
     if (resp?.token_string) {
       // console.log('notification1', resp?.token_string)
       props.navigation.replace('Schedules', {

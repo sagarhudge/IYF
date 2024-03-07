@@ -18,8 +18,7 @@ const ImageCard = ({ data }: any) => (
             iconColor={theme.colors.primary}
             size={20}
             onPress={() => { 
-                console.log('PDF',data?.pdf)
-                data?.pdf && Linking.openURL(data?.pdf) }}
+                 data?.pdf && Linking.openURL(data?.pdf) }}
         />}
 
         <Image

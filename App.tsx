@@ -27,8 +27,7 @@ function App({navigation}:any): React.JSX.Element {
       }
 
       const resp = await ApiService.postData('device', body);
-      console.log('token-resp', resp)
-      if (resp)
+       if (resp)
         LocaleStorage.setDeviceId(token);
     }
   }

@@ -13,7 +13,7 @@ export async function Notification(navigation: any) {
     // });
 
     messaging()?.onNotificationOpenedApp(remoteMessage => {
-        console.log('onNotificationOpenedApp', remoteMessage);
+        // console.log('onNotificationOpenedApp', remoteMessage);
         // navigation.navigate('Schedules');
     });
     
@@ -21,7 +21,7 @@ export async function Notification(navigation: any) {
     messaging()?.getInitialNotification().then((remoteNotify) => {
 
         if (remoteNotify) {
-            console.log('getInitialNotification', remoteNotify)
+            // console.log('getInitialNotification', remoteNotify)
         }
     })
 
@@ -68,7 +68,7 @@ export async function getToken() {
     await messaging()?.registerDeviceForRemoteMessages();
     const token = await messaging()?.getToken();
     // const tokenNew = messaging()?.onTokenRefresh(newToken => newToken);
-    console.log("device_token", token);
+    // console.log("device_token", token);
 
     return token;
 };
